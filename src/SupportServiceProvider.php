@@ -9,36 +9,36 @@ class SupportServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // نشر migrations - استخدم publishes() بدلاً من publishesMigrations()
+        // نشر migrations - المسار الصحيح
         $this->publishes([
-            __DIR__.'/../database/migrations' => database_path('migrations'),
+            __DIR__.'/../../database/migrations' => database_path('migrations'),
         ], 'khdija-support-migrations');
 
-        // نشر views
+        // نشر views - المسار الصحيح
         $this->publishes([
-            __DIR__.'/Resources/views' => resource_path('views/vendor/khdija-support'),
+            __DIR__.'/../../resources/views' => resource_path('views/vendor/khdija-support'),
         ], 'khdija-support-views');
 
-        // نشر config
+        // نشر config - المسار الصحيح
         $this->publishes([
-            __DIR__.'/../config/khdija-support.php' => config_path('khdija-support.php'),
+            __DIR__.'/../../config/khdija-support.php' => config_path('khdija-support.php'),
         ], 'khdija-support-config');
 
         // تحميل routes
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
 
-        // تحميل views
-        $this->loadViewsFrom(__DIR__.'/Resources/views', 'khdija-support');
+        // تحميل views - المسار الصحيح
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'khdija-support');
 
-        // تحميل migrations
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        // تحميل migrations - المسار الصحيح
+        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 
     public function register()
     {
-        // دمج config
+        // دمج config - المسار الصحيح
         $this->mergeConfigFrom(
-            __DIR__.'/../config/khdija-support.php', 'khdija-support'
+            __DIR__.'/../../config/khdija-support.php', 'khdija-support'
         );
     }
 }
