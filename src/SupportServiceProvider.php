@@ -9,34 +9,34 @@ class SupportServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // نشر migrations - المسار الصحيح
+        // Publish migrations
         $this->publishes([
             __DIR__.'/../../database/migrations' => database_path('migrations'),
         ], 'khdija-support-migrations');
 
-        // نشر views - المسار الصحيح
+        // Publish views
         $this->publishes([
             __DIR__.'/../../resources/views' => resource_path('views/vendor/khdija-support'),
         ], 'khdija-support-views');
 
-        // نشر config - المسار الصحيح
+        // Publish config
         $this->publishes([
             __DIR__.'/../../config/khdija-support.php' => config_path('khdija-support.php'),
         ], 'khdija-support-config');
 
-        // تحميل routes
+        // Load routes
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
 
-        // تحميل views - المسار الصحيح
+        // Load views
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'khdija-support');
 
-        // تحميل migrations - المسار الصحيح
+        // Load migrations
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 
     public function register()
     {
-        // دمج config - المسار الصحيح
+        // Merge config
         $this->mergeConfigFrom(
             __DIR__.'/../../config/khdija-support.php', 'khdija-support'
         );
