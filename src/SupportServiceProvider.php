@@ -9,7 +9,7 @@ class SupportServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // نشر migrations
+        // نشر migrations - استخدم publishes() بدلاً من publishesMigrations()
         $this->publishes([
             __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'khdija-support-migrations');
